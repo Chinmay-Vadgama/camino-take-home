@@ -97,9 +97,6 @@ const ApplicationForm = () => {
             </AppBar>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
-                    <Typography component="h1" variant="h4" align="center">
-                        Loan Application Form
-                    </Typography>
                     
                     <Grid container spacing={1}>
                         <Grid item xs={6} >

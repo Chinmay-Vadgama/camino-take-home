@@ -4,6 +4,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
+import {Radio, RadioGroup, FormControl, FormLabel, Select, FormHelperText} from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { sizeWidth } from '@material-ui/system';
+
+
 
 const useStyles = makeStyles((theme)=>({
     container: {
@@ -14,7 +19,10 @@ const useStyles = makeStyles((theme)=>({
     },
     fields:{
       margin:'auto',
-    }
+    },
+    textField: {
+      width: 'auto'
+    },
   }));
 
 const loanPurposes = [
@@ -49,6 +57,7 @@ const BasicInformation = () => {
                 onChange={setFname}
                 margin="normal"
                 variant="outlined"
+                style = {{width: 700}}
                 />
                 <br />
                 <TextField
@@ -60,40 +69,95 @@ const BasicInformation = () => {
                   onChange={setLname}
                   margin="normal"
                   variant="outlined"
+                  style = {{width: 700}}
                   />
                 <br />
                 <TextField
                   id="email"
-                  label="Email"
+                  label="Best Contact Email"
                   required
                   className={classes.textField}
+                  fullWidth={true}
                   value={email}
                   onChange={setEmail}
                   margin="normal"
                   variant="outlined"
+                  style = {{width: 700}}
                   />
                   <br />
                 <TextField
-                  id="email"
-                  label="Email"
+                  id="phone"
+                  label="Mobile Phone Number"
                   required
                   className={classes.textField}
                   value={email}
-                  onChange={setEmail}
+                  onChange={setMobile}
                   margin="normal"
                   variant="outlined"
+                  style = {{width: 700}}
                   />
                 <br/>
+                <div align='left'>
+                <FormControl component="fieldset">
+                <FormLabel component="legend">Do you own business?</FormLabel>
+                <RadioGroup aria-label="business" name="businessown" onChange={setOwnsBussiness} defaultValue={"Yes"}>
+                  <FormControlLabel value="Yes" control={<Radio/> } label="Yes"/>
+                  <FormControlLabel value="No" control={<Radio/>} label="No" />
+                </RadioGroup>
+              </FormControl>
+                </div>
+                <br/>
                 <TextField
-                id="email"
-                label="Email"
+                id="BusinessName"
+                label="Business Name"
                 required
                 className={classes.textField}
                 value={email}
                 onChange={setEmail}
                 margin="normal"
                 variant="outlined"
+                style = {{width: 700}}
                 />
+                <br/>
+                <TextField
+                id="LoanAmount"
+                label="Desired Loan Amount"
+                required
+                className={classes.textField}
+                value={email}
+                onChange={setEmail}
+                margin="normal"
+                variant="outlined"
+                style = {{width: 700}}
+                />
+                <br/>
+                <div align='left'>
+                <FormControl className={classes.formControl}>
+                <Select
+                  onChange={setLoanAmount}
+                  displayEmpty
+                  className={classes.selectEmpty}
+                  inputProps={{ 'aria-label': 'Without label' }}
+                  defaultValue={'fp'}
+                >
+                  <MenuItem value={'np'}>Non Profit</MenuItem>
+                  <MenuItem value={'fp'}>For Profit</MenuItem>
+                  <MenuItem value={'misc'}>Misc</MenuItem>
+                </Select>
+                <FormHelperText>Purpose of Loan</FormHelperText>
+              </FormControl>
+              </div>
+                <br/>
+                <div align='left'>
+                <FormControl component="fieldset">
+                <FormLabel component="legend">Have you been in business for atleast 9 months?</FormLabel>
+                <RadioGroup aria-label="business" name="businessown" onChange={setOwnsBussiness} defaultValue={"Yes"}>
+                  <FormControlLabel value="Yes" control={<Radio/> } label="Yes"/>
+                  <FormControlLabel value="No" control={<Radio/>} label="No" />
+                </RadioGroup>
+              </FormControl>
+                </div>
+
               </div>
             </form>
 
