@@ -19,8 +19,9 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 import Box from "../stylecomponents/Box";
 import SuccessAlertMessage from "../alertsMessages/SuccessAlert";
-
+import Toggle from '../ToggleRenderProps'
 /********************************************************/
+
 
 const steps = ['Basic Information', 'Step 2', 'Step 3'];
 const useStyles = makeStyles((theme)=>({
@@ -76,6 +77,23 @@ const ApplicationForm = () => {
                 <Toolbar>
                     <img src="CaminoLogo.png"/>
                 </Toolbar>
+                <div>
+                    <Toggle render={ ({on, toggle}) => (
+                        <div align='right'>
+                            {on && 
+                            <div align='center'>
+                                <h3> Need Help? Call or chat with us directly</h3>
+                                <div>
+                                <button style={{color:'White', backgroundColor:'#1f403b', borderColor:'#1f403b', fontSize:'20px'}}> CALL </button>
+                                <button style={{color:'White', backgroundColor:'#1f403b', borderColor:'#1f403b', fontSize:'20px'}}> EMAIL </button>
+                                </div>
+                                
+                            </div>}
+                            <button onClick={toggle} style={{color:'White', backgroundColor:'#1f403b', borderColor:'#1f403b', fontSize:'20px'}}>Help Open/Close</button>
+                        </div>
+                    )
+                    }/>
+                </div>
             </AppBar>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
