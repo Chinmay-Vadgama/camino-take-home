@@ -32,7 +32,8 @@ const loanPurposes = [
     "Car Loan",
     "Bussiness Loan"
 ]
-const BasicInformation = () => {
+const BasicInformation = (props) => {
+    
     const classes = useStyles();
     const [fname, setFname] = useState("");
     const [lname,setLname] = useState("");
@@ -41,6 +42,46 @@ const BasicInformation = () => {
     const [ownsBussiness,setOwnsBussiness] = useState(true);
     const [bussinessName,setBussinessName] = useState("");
     const [loanAmount,setLoanAmount] = useState(0);
+    const [loanType,setLoanType] = useState("");
+    const [ques,setQues] = useState("");
+    /* Field Validation */
+    const onFNameChange = (e) => {
+      e.preventDefault();
+      setFname(e.target.value);
+    }
+    const onLNameChange = (e) => {
+      e.preventDefault();
+      setLname(e.target.value);
+    }
+    const onEmailChange = (e) => {
+      e.preventDefault();
+      setEmail(e.target.value);
+    }
+    const onMobileChange = (e) => {
+      e.preventDefault();
+      setMobile(e.target.value);
+    }
+    const onBusinessOwnChange = (e) => {
+      e.preventDefault();
+      setOwnsBussiness(e.target.value);
+    }
+    const onBusnessNameChange = (e) => {
+      e.preventDefault();
+      setBussinessName(e.target.value);
+    }
+    const onLoanAmountChange = (e) => {
+      e.preventDefault();
+      setLoanAmount(e.target.value);
+    }
+    const onLoanTypeChange = (e) => {
+      e.preventDefault();
+      setLoanType(e.target.value);
+    }
+    
+    const onQueChange = (e) => {
+      e.preventDefault();
+      setQues(e.target.value);
+    }
     return (
         <div>
             <h1>Basic Information </h1>
@@ -54,7 +95,7 @@ const BasicInformation = () => {
                 required
                 className={classes.textField}
                 value={fname}
-                onChange={setFname}
+                onChange={onFNameChange}
                 margin="normal"
                 variant="outlined"
                 style = {{width: 700}}
@@ -66,7 +107,7 @@ const BasicInformation = () => {
                   required
                   className={classes.textField}
                   value={lname}
-                  onChange={setLname}
+                  onChange={onLNameChange}
                   margin="normal"
                   variant="outlined"
                   style = {{width: 700}}
@@ -79,7 +120,7 @@ const BasicInformation = () => {
                   className={classes.textField}
                   fullWidth={true}
                   value={email}
-                  onChange={setEmail}
+                  onChange={onEmailChange}
                   margin="normal"
                   variant="outlined"
                   style = {{width: 700}}
@@ -90,8 +131,8 @@ const BasicInformation = () => {
                   label="Mobile Phone Number"
                   required
                   className={classes.textField}
-                  value={email}
-                  onChange={setMobile}
+                  value={mobile}
+                  onChange={onMobileChange}
                   margin="normal"
                   variant="outlined"
                   style = {{width: 700}}
@@ -100,7 +141,7 @@ const BasicInformation = () => {
                 <div align='left'>
                 <FormControl component="fieldset">
                 <FormLabel component="legend">Do you own business?</FormLabel>
-                <RadioGroup aria-label="business" name="businessown" onChange={setOwnsBussiness} defaultValue={"Yes"}>
+                <RadioGroup aria-label="business" name="businessown" onChange={onBusinessOwnChange} defaultValue={"Yes"}>
                   <FormControlLabel value="Yes" control={<Radio/> } label="Yes"/>
                   <FormControlLabel value="No" control={<Radio/>} label="No" />
                 </RadioGroup>
@@ -112,8 +153,8 @@ const BasicInformation = () => {
                 label="Business Name"
                 required
                 className={classes.textField}
-                value={email}
-                onChange={setEmail}
+                value={bussinessName}
+                onChange={onBusnessNameChange}
                 margin="normal"
                 variant="outlined"
                 style = {{width: 700}}
@@ -124,8 +165,8 @@ const BasicInformation = () => {
                 label="Desired Loan Amount"
                 required
                 className={classes.textField}
-                value={email}
-                onChange={setEmail}
+                value={loanAmount}
+                onChange={onLoanAmountChange}
                 margin="normal"
                 variant="outlined"
                 style = {{width: 700}}
@@ -134,7 +175,7 @@ const BasicInformation = () => {
                 <div align='left'>
                 <FormControl className={classes.formControl}>
                 <Select
-                  onChange={setLoanAmount}
+                  onChange={onLoanTypeChange}
                   displayEmpty
                   className={classes.selectEmpty}
                   inputProps={{ 'aria-label': 'Without label' }}
@@ -151,7 +192,7 @@ const BasicInformation = () => {
                 <div align='left'>
                 <FormControl component="fieldset">
                 <FormLabel component="legend">Have you been in business for atleast 9 months?</FormLabel>
-                <RadioGroup aria-label="business" name="businessown" onChange={setOwnsBussiness} defaultValue={"Yes"}>
+                <RadioGroup aria-label="business" name="businessown" onChange={onQueChange} defaultValue={"Yes"}>
                   <FormControlLabel value="Yes" control={<Radio/> } label="Yes"/>
                   <FormControlLabel value="No" control={<Radio/>} label="No" />
                 </RadioGroup>

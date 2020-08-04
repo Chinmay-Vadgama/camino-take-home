@@ -44,9 +44,12 @@ const useStyles = makeStyles((theme)=>({
 
 
 const ApplicationForm = () => {
+    
     const classes = useStyles();
     const [activeStep,setActiveStep] = useState(0);
+    const [isDataValid,setIsDataValid] = useState(false);
     
+   
     const nextStep = () =>{
         setActiveStep(activeStep + 1);
         
@@ -61,12 +64,16 @@ const ApplicationForm = () => {
             case 0:
                 return <BasicInformation/>
             case 1:
+               
                 return <Step2/>
             case 2:
+                
                 return <Step3/>
             case 3:
+                
                 return <SuccessAlertMessage message="Application Submitted Successfully!" step={()=> setActiveStep(0)}/>
             default:
+                
                 throw new Error('Invalid Step Value');
         }
     }
@@ -131,6 +138,7 @@ const ApplicationForm = () => {
                             variant="contained"
                             color="primary"
                             onClick={nextStep}
+                            disabled={false}
                             className={classes.button}>
                                 {activeStep === steps.length-1 ? "Submit Application!":"Next"}
                             </Button>
