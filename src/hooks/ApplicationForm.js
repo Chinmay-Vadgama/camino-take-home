@@ -63,6 +63,7 @@ const ApplicationForm = () => {
         switch(step){
             case 0:
                 return <BasicInformation props={isValid => setIsValid(isValid)}/>
+                console.log('update')
                 console.log('after',isValid)
             case 1:
                
