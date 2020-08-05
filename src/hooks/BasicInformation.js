@@ -32,21 +32,34 @@ const loanPurposes = [
     "Car Loan",
     "Bussiness Loan"
 ]
-const BasicInformation = (props) => {
-    
+const BasicInformation = ({props}) => { 
     const classes = useStyles();
     const [fname, setFname] = useState("");
     const [lname,setLname] = useState("");
     const [email,setEmail] = useState("");
     const [mobile,setMobile] = useState("");
-    const [ownsBussiness,setOwnsBussiness] = useState(true);
+    const [ownsBussiness,setOwnsBussiness] = useState("Yes");
     const [bussinessName,setBussinessName] = useState("");
     const [loanAmount,setLoanAmount] = useState(0);
-    const [loanType,setLoanType] = useState("");
-    const [ques,setQues] = useState("");
+    const [loanType,setLoanType] = useState("fp");
+    const [ques,setQues] = useState("Yes");
+    const [isValid,setIsValid] = useState(false)
+    
+    useEffect(() => {
+      if (fname!="" && lname!="" && email!="" && mobile!="" && bussinessName!="")
+      {
+         setIsValid(false)
+         props(isValid)
+         console.log(isValid)
+      }
+    });
+
+
     /* Field Validation */
+
     const onFNameChange = (e) => {
       e.preventDefault();
+
       setFname(e.target.value);
     }
     const onLNameChange = (e) => {

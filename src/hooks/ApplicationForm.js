@@ -47,9 +47,8 @@ const ApplicationForm = () => {
     
     const classes = useStyles();
     const [activeStep,setActiveStep] = useState(0);
-    const [isDataValid,setIsDataValid] = useState(false);
-    
-   
+    const [isValid, setIsValid] = useState(true)
+    console.log('before',isValid)
     const nextStep = () =>{
         setActiveStep(activeStep + 1);
         
@@ -59,10 +58,12 @@ const ApplicationForm = () => {
         setActiveStep(activeStep - 1);
     };  
 
+
     var getStepContent = (step) => {
         switch(step){
             case 0:
-                return <BasicInformation/>
+                return <BasicInformation props={isValid => setIsValid(isValid)}/>
+                console.log('after',isValid)
             case 1:
                
                 return <Step2/>
@@ -76,7 +77,9 @@ const ApplicationForm = () => {
                 
                 throw new Error('Invalid Step Value');
         }
+        
     }
+
     return (
         <Fragment>
             <CssBaseline/>
@@ -124,7 +127,7 @@ const ApplicationForm = () => {
                             })}
                         </Grid>
                     </Grid>
-
+                    
                     {/* Dynamic Fragments */}
                     <Fragment>
                         {getStepContent(activeStep)}
@@ -138,7 +141,7 @@ const ApplicationForm = () => {
                             variant="contained"
                             color="primary"
                             onClick={nextStep}
-                            disabled={false}
+                            disabled={isValid}
                             className={classes.button}>
                                 {activeStep === steps.length-1 ? "Submit Application!":"Next"}
                             </Button>
